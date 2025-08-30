@@ -57,7 +57,7 @@ pip install tweepy pandas s3fs apache-airflow
 ### 1. Clone the Repository
 ```bash
 git clone https://github.com/atulpandey02/airflow-ec2-twitter-to-s3
-cd twitter-etl-pipeline
+cd airflow-ec2-twitter-to-s3
 ```
 
 ### 2. Configure Twitter API Credentials
@@ -99,7 +99,7 @@ airflow scheduler
 ## Project Structure
 
 ```
-twitter-etl-pipeline/
+airflow-ec2-twitter-to-s3/
 │
 ├── docs/
 │   ├── .gitkeep
