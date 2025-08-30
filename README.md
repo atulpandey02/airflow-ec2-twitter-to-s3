@@ -4,10 +4,11 @@ A data engineering project that extracts Twitter data using the Twitter API, pro
 
 ## Architecture Overview
 
+![Architecture Diagram](images/architecture.png)
+
 ```
 Twitter API → Python ETL → Apache Airflow (EC2) → Amazon S3
 ```
-![Architecture Diagram](images/architecture.png)
 
 This pipeline extracts tweets from Elon Musk's Twitter account, processes the data, and stores it in a structured format for analysis.
 
@@ -55,12 +56,12 @@ pip install tweepy pandas s3fs apache-airflow
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/atulpandey02/airflow-ec2-twitter-to-s3
+git clone <your-repository-url>
 cd twitter-etl-pipeline
 ```
 
 ### 2. Configure Twitter API Credentials
-Edit `twitter_etl.py` and add your Twitter API credentials:
+Edit `notebooks/twitter_etl.py` and add your Twitter API credentials:
 ```python
 access_key = "your_access_key_here" 
 access_secret = "your_access_secret_here" 
@@ -82,8 +83,8 @@ airflow users create \
     --email admin@example.com
 
 # Copy DAG files to Airflow directory
-cp twitter_dag.py ~/airflow/dags/
-cp twitter_etl.py ~/airflow/dags/
+cp notebooks/twitter_dag.py ~/airflow/dags/
+cp notebooks/twitter_etl.py ~/airflow/dags/
 ```
 
 ### 4. Start Airflow Services
@@ -117,18 +118,24 @@ twitter-etl-pipeline/
 
 ## File Descriptions
 
-### `twitter_etl.py`
+### `notebooks/twitter_etl.py`
 Contains the main ETL function that:
 - Authenticates with Twitter API using OAuth
 - Fetches tweets from @elonmusk timeline
 - Extracts relevant fields (text, engagement metrics, timestamps)
 - Saves processed data to CSV format
 
-### `twitter_dag.py`
+### `notebooks/twitter_dag.py`
 Defines the Airflow DAG with:
 - Daily execution schedule
 - Error handling and retry logic
 - Task dependencies and workflow structure
+
+### `docs/twitter_commands.sh`
+Contains setup and deployment commands for:
+- EC2 instance configuration
+- Airflow installation and setup
+- Environment configuration scripts
 
 ## Data Schema
 
@@ -146,7 +153,7 @@ The extracted data includes the following fields:
 
 ### Manual Execution
 ```python
-from twitter_etl import run_twitter_etl
+from notebooks.twitter_etl import run_twitter_etl
 run_twitter_etl()
 ```
 
@@ -157,7 +164,7 @@ run_twitter_etl()
 4. Monitor execution in the dashboard
 
 ### Scheduled Execution
-The DAG is configured to run daily at midnight. You can modify the schedule in `twitter_dag.py`:
+The DAG is configured to run daily at midnight. You can modify the schedule in `notebooks/twitter_dag.py`:
 ```python
 schedule_interval=timedelta(days=1)  # Modify as needed
 ```
