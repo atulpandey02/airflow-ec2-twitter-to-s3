@@ -55,7 +55,7 @@ pip install tweepy pandas s3fs apache-airflow
 
 ### 1. Clone the Repository
 ```bash
-git clone <your-repository-url>
+git clone https://github.com/atulpandey02/airflow-ec2-twitter-to-s3
 cd twitter-etl-pipeline
 ```
 
