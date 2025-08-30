@@ -100,10 +100,19 @@ airflow scheduler
 ```
 twitter-etl-pipeline/
 │
-├── twitter_etl.py          # Main ETL logic
-├── twitter_dag.py          # Airflow DAG configuration
-├── README.md              # Project documentation
-└── requirements.txt       # Python dependencies
+├── docs/
+│   ├── .gitkeep
+│   └── twitter_commands.sh    # Setup and deployment commands
+├── images/
+│   ├── .gitkeep
+│   └── architecture.png       # Architecture diagram
+├── notebooks/
+│   ├── .gitkeep
+│   ├── twitter_dag.py         # Airflow DAG configuration
+│   └── twitter_etl.py         # Main ETL logic
+├── .gitignore                 # Git ignore rules
+├── LICENSE                    # Project license
+└── README.md                  # Project documentation
 ```
 
 ## File Descriptions
